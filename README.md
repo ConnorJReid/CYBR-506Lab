@@ -3,8 +3,8 @@ this is for the final docker project for cyber 506
 
 Q1) What are some of the parts of this lab that are insanely insecure?
 A: the first thing that comes to mind is the fact that passwords are stored in cleartext in the config file, this is not good.
-another issue is that it does not support TLS currently. this is an issue because an attacker can preform MITM to steal credentials or just intercept traffic in generial. Finally, and this ties in with the last point, the sever does not have a valid certificate making it impossible to 
-Accurately determine if you are connected to the actual sever. 
+another issue is that it does not support TLS currently. this is an issue because an attacker can preform MITM to steal credentials or just intercept traffic in generial. Thirdley, and this ties in with the last point, the sever does not have a valid certificate making it impossible to 
+Accurately determine if you are connected to the actual sever. Finally the communication between the client and sever is over UDP so the traffic is not encrypted.
 
 Q2) What would your next steps be to make them more secure?
 A: I think the most straight forward addition is to inable TLSv1.3 and get the sever a proper certificate that can be used in the TLS protocol.
