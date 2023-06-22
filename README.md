@@ -1,21 +1,13 @@
 # CYBR-506Lab
 this is for the final docker project for cyber 506
 
-Q1) What are some of the parts of this lab that are insanely insecure?
-A: the first thing that comes to mind is the fact that passwords are stored in cleartext in the config file, this is not good.
-another issue is that it does not support TLS currently. this is an issue because an attacker can preform MITM to steal credentials or just intercept traffic in generial. Thirdley, and this ties in with the last point, the sever does not have a valid certificate making it impossible to 
-Accurately determine if you are connected to the actual sever. Finally the communication between the client and sever is over UDP so the traffic is not encrypted.
+Set UP instructions:
+1 pull the files off github
+2 enter your terminal and traverse to the directory of the downloaded file. 
+3 run the command: docker build -t lab6 
+4 run the command: docker run -d --name my-radius-server -p 1812:1812/udp -p 1813:1813/udp
+5 enter into the container's terminal via the docker app and enter the command: radtest connor 1130 localhost 0 testing123
+6 create a second instance of the running docker container under a different name. 
+    run the command: docker run -d --name my-radius-server -p 5000:5000/udp -p 5000:5000/udp
+7 enter into NEWLY CREATED container's terminal via the docker app and enter the command: radtest connor 1130 127.0.0.1:1813 1130
 
-Q2) What would your next steps be to make them more secure?
-A: I think the most straight forward addition is to inable TLSv1.3 and get the sever a proper certificate that can be used in the TLS protocol.
-this would make communcation with the sever and client secure while aslo ensuring that the sever is validated before any credentials are handed off.
-
-Q3) What are some features in this lab that make it somewhat secure?
-A: one future that makes this somewhat secure is when you give either a incorrect username or password, the request is rejected
-and it does not distinguish which field was incorrect. this will help prevent attackers from guessing credentials. The only
-other thing I can think of is that is requires a username and password which is more secure than nothing.
-
-Q4) what did I Learn?
-A: I learned a few things, most of it has been around what the docker application does and how to use it, but more generally, I learned why Docker
-is a powerful tool and how it can be leveraged to preform many different things. The most intresting to me was learning how it can be used in
-a microservice enviorment which has many secuirty benefits. What I probably struggled with the most in this lab was figuring out how these containers connected to the internet, and how I though my client could connect with them without having to use the docker application. I felt really dumb when I realized that all I needed to do was just connect to localhost:port# but It was cool getting to understand how containers can bind with ports on the client. I also learned a bit of what its like to work with a radius sever, and how to interact with the configuration file. getting the chance to edit this config file gave me a much better idea of how radius severs are set up. It also showed me just how easy it is to mess somthing up and cause misconfigurations that could leave significant vulnerability. With regards to radius, I think the most important lesson I learned is that a Radius sever is useless if the configurations are poorly set up.
