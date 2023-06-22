@@ -11,7 +11,9 @@ in the TLS protocol. this would make communication with the sever and client sec
 validated before any credentials are handed off.
 
 Q3) What are some features in this lab that make it somewhat secure?
-A: one future that makes this somewhat secure is when you give either a incorrect username or password, the request is rejected and it does not distinguish which field was incorrect. this will help prevent attackers from guessing credentials. The only other thing I can think of is that is requires a username and password which is more secure than nothing.\
+A: one future that makes this somewhat secure is when you give either a incorrect username or password, the request is 
+rejected and it does not distinguish which field was incorrect. this will help prevent attackers from guessing credentials. 
+The only other thing I can think of is that is requires a username and password which is more secure than nothing.
 
 Q4) what did I Learn?
 Connor:
